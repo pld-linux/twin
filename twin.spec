@@ -1,4 +1,5 @@
 Summary:	Twin - a windowing environment
+Summary:	Tekstowe srodowkisko okienkowe
 Name:		twin
 Version:	0.3.9
 Release:	1
@@ -28,6 +29,13 @@ It supports a variety of displays:
 - itself (you can display a twin on another twin);
 - twdisplay, a general network-transparent display client, used
   to attach/detach more displays on-the-fly.
+
+%description -l pl
+Twin jest tekstowym ¶rodowiskiem okienkowym - zmienia terminal tekstowy
+w ¶rodowisko podobne do mened¿era okien znanego ze ¶rodowiska XWindow.
+
+Mo¿e zostaæ uruchomiony na konsoli linuksowej, w ¶rodowisku XWindows,
+pozwalaj±c na uruchamianie wiele okien terminala.
 
 %package devel
 Summary:	Header files and etc for develop twin applications
