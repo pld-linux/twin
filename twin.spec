@@ -2,11 +2,12 @@ Summary:	Twin - a windowing environment
 Summary(pl):	Tekstowe ¶rodowisko okienkowe
 Name:		twin
 Version:	0.5.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/twin/%{name}-%{version}.tar.gz
 # Source0-md5:	46b31e1bdd4fda60336da24034896c53
+Patch0:		%{name}-bitops.patch
 URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -120,9 +121,9 @@ Sterownik TTY z obs³ug± myszy przez GPM do twin.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
