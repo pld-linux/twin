@@ -1,16 +1,19 @@
 Summary:	Twin - a windowing environment
 Summary:	Tekstowe srodowkisko okienkowe
 Name:		twin
-Version:	0.3.9
+Version:	0.4.4
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://download.sourceforge.net/twin/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ncurses.patch
 BuildRequires:	XFree86-devel
+BuildRequires:  automake
+BuildRequires:  autoconf
 BuildRequires:	gpm-devel
 BuildRequires:	libggi-devel
 BuildRequires:	libgii-devel
+BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
 URL:		http://twin.sourceforge.net/
@@ -63,45 +66,15 @@ Biblioteki statyczne twin.
 
 %prep
 %setup -q
-%patch0 -p1
-
-perl -pi -e "s/prefix = \/usr\/local/prefix = \%{_prefix}/" MakePaths
 
 %build
-%{__make} config <<EOF
-y
-y
-n
-y
-m
-y
-y
-y
-m
-m
-y
-y
-m
-y
-n
-m
-y
-y
-y
-y
-m
-m
-m
-m
-y
-n
-n
-n
-y
-y
-n
-EOF
-%{__make} OPT_FLAGS="%{rpmcflags}"
+rm -f missing
+%{__libtoolize}
+aclocal
+%{__autoconf}
+
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -110,9 +83,6 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man1
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
-
-gzip -9nf BUGS Changelog.txt README README.porting TODO twin-*.lsm \
-	docs/{Configure,libTw++.txt,libTw.txt,Tutorial} clients/README.twsetroot
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -123,6 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/twin/
 %dir %{_libdir}/twin/modules
@@ -136,6 +107,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
 
-#%files static
-#%defattr(644,root,root,755)
-#%{_libdir}/lib*.a
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
