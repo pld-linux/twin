@@ -2,7 +2,7 @@ Summary:	Twin - a windowing environment
 Summary:	Tekstowe ¶rodowisko okienkowe
 Name:		twin
 Version:	0.4.5
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/twin/%{name}-%{version}.tar.gz
@@ -181,6 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 %files hw-X11
 %defattr(644,root,root,755)
 %doc themes/hw_gfx/README
+%attr(755,root,root) %{_libdir}/TT/HW/hw_X11.so*
 %attr(755,root,root) %{_libdir}/twin/modules/HW/hw_X*.so*
 %attr(755,root,root) %{_libdir}/twin/modules/HW/hw_gfx.so*
 %dir %{_datadir}/twin/themes/hw_gfx
