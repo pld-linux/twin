@@ -123,7 +123,7 @@ Sterownik TTY z obs³ug± myszy przez GPM do twin.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 
 %configure
