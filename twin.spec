@@ -1,7 +1,7 @@
 Summary:	Twin - a windowing environment
 Name:		twin
 Version:	0.3.7
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
@@ -12,8 +12,10 @@ Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-optflags.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	gpm-devel
+%ifarch %{x86}
 BuildRequires:	libggi-devel
 BuildRequires:	libgii-devel
+%endif
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
 URL:		http://twin.sourceforge.net/
@@ -89,7 +91,11 @@ y
 m
 m
 m
+%ifarch %{x86}
 m
+%else
+n
+%endif
 y
 n
 n
