@@ -1,12 +1,12 @@
 Summary:	Twin - a windowing environment
 Summary(pl):	Tekstowe ¶rodowisko okienkowe
 Name:		twin
-Version:	0.4.6
+Version:	0.5.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/twin/%{name}-%{version}.tar.gz
-# Source0-md5:	92429bb5550a4c231085585a3473bf4d
+# Source0-md5:	46b31e1bdd4fda60336da24034896c53
 URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -126,15 +126,17 @@ rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-
 %configure
-%{__make} CFLAGS="%{rpmcflags} -Wall -D_GNU_SOURCE"
+
+%{__make} \
+	CFLAGS="%{rpmcflags} -Wall -D_GNU_SOURCE"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -146,14 +148,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS Changelog.txt README TODO docs/{Compatibility,Philosophy,Tutorial}
+%doc BUGS Changelog.txt README docs/{Compatibility,Philosophy,Tutorial}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/TT
-%dir %{_libdir}/TT/HW
-%attr(755,root,root) %{_libdir}/TT/HW/hw_twin.so*
-%attr(755,root,root) %{_libdir}/TT/HW/hw_xml.so*
+%dir %{_libdir}/TT/modules
+%dir %{_libdir}/TT/modules/HW
+%attr(755,root,root) %{_libdir}/TT/modules/HW/twin*.so*
+%attr(755,root,root) %{_libdir}/TT/modules/HW/xml.so*
 %dir %{_libdir}/twin
 %{_libdir}/twin/system.*
 %dir %{_libdir}/twin/modules
@@ -167,7 +170,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc docs/libTw.txt clients/README.twsetroot
+%doc docs/{diagram.txt,libTT-design.txt,libTw.txt,ltrace.conf} clients/README.twsetroot
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
 
@@ -177,12 +180,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files TT-hw-gtk
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/TT/HW/hw_gtk.so*
+%attr(755,root,root) %{_libdir}/TT/modules/HW/gtk.so*
 
 %files hw-X11
 %defattr(644,root,root,755)
 %doc themes/hw_gfx/README
-%attr(755,root,root) %{_libdir}/TT/HW/hw_X11.so*
+%attr(755,root,root) %{_libdir}/TT/modules/HW/X11.so*
 %attr(755,root,root) %{_libdir}/twin/modules/HW/hw_X*.so*
 %attr(755,root,root) %{_libdir}/twin/modules/HW/hw_gfx.so*
 %dir %{_datadir}/twin/themes/hw_gfx
