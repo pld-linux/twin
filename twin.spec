@@ -1,23 +1,18 @@
 Summary:	Twin - a windowing environment
 Name:		twin
-Version:	0.3.7
-Release:	5
+Version:	0.3.8
+Release:	1
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
 Group(pl):	Biblioteki
 Source0:	http://download.sourceforge.net/twin/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ncurses.patch
-Patch1:		%{name}-DESTDIR.patch
-Patch2:		%{name}-optflags.patch
-Patch3:		%{name}-devfs.patch
-Patch4:		%{name}-makeinstall.patch
+Patch1:		%{name}-makeinstall.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	gpm-devel
-%ifarch %{x86}
 BuildRequires:	libggi-devel
 BuildRequires:	libgii-devel
-%endif
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
 URL:		http://twin.sourceforge.net/
@@ -68,9 +63,8 @@ Biblioteki statyczne twin.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+
+perl -pi -e "s/prefix = \/usr\/local/prefix = \%{_prefix}/" MakePaths
 
 %build
 %{__make} config <<EOF
@@ -95,11 +89,7 @@ y
 m
 m
 m
-%ifarch %{x86}
 m
-%else
-n
-%endif
 y
 n
 n
@@ -112,13 +102,13 @@ EOF
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_mandir}/man1
+%{__install} -d $RPM_BUILD_ROOT%{_mandir}/man1
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
+%{__install} docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf BUGS Changelog.txt README README.porting TODO twin-0.3.7.lsm \
+gzip -9nf BUGS Changelog.txt README README.porting TODO twin-*.lsm \
 	docs/{Configure,libTw++.txt,libTw.txt,Tutorial} clients/README.twsetroot
 
 %clean
