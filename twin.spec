@@ -1,7 +1,7 @@
 Summary:	Twin - a windowing environment
 Name:		twin
 Version:	0.3.7
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
