@@ -5,7 +5,7 @@ Version:	0.4.5
 Release:	2
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/twin/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/twin/%{name}-%{version}.tar.gz
 URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
