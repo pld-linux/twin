@@ -6,6 +6,7 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/twin/%{name}-%{version}.tar.gz
+# Source0-md5:	92429bb5550a4c231085585a3473bf4d
 URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
