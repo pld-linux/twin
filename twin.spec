@@ -1,7 +1,7 @@
 Summary:	Twin - a windowing environment
 Name:		twin
 Version:	0.3.7
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
@@ -118,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/twin/
 %dir %{_libdir}/twin/modules
