@@ -10,6 +10,7 @@ Source0:	http://download.sourceforge.net/twin/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-optflags.patch
+Patch3:		%{name}-devfs.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	gpm-devel
 %ifarch %{x86}
@@ -67,6 +68,7 @@ Biblioteki statyczne twin.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__make} config <<EOF
