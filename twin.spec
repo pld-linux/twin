@@ -11,6 +11,7 @@ Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-DESTDIR.patch
 Patch2:		%{name}-optflags.patch
 Patch3:		%{name}-devfs.patch
+Patch4:		%{name}-makeinstall.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	gpm-devel
 %ifarch %{x86}
@@ -69,6 +70,7 @@ Biblioteki statyczne twin.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__make} config <<EOF
