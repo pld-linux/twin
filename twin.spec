@@ -1,6 +1,6 @@
 Summary:	Twin - a windowing environment
 Name:		twin
-Version:	0.3.8
+Version:	0.3.9
 Release:	1
 License:	LGPL
 Group:		Libraries
@@ -8,7 +8,6 @@ Group(de):	Libraries
 Group(pl):	Biblioteki
 Source0:	http://download.sourceforge.net/twin/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ncurses.patch
-Patch1:		%{name}-makeinstall.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	gpm-devel
 BuildRequires:	libggi-devel
@@ -62,7 +61,6 @@ Biblioteki statyczne twin.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 perl -pi -e "s/prefix = \/usr\/local/prefix = \%{_prefix}/" MakePaths
 
@@ -71,12 +69,14 @@ perl -pi -e "s/prefix = \/usr\/local/prefix = \%{_prefix}/" MakePaths
 y
 y
 n
+y
 m
 y
 y
+y
 m
 m
-n
+y
 y
 m
 y
