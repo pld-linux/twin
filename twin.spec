@@ -1,22 +1,22 @@
 Summary:	Twin - a windowing environment
-Summary:	Tekstowe srodowkisko okienkowe
+Summary:	Tekstowe ¶rodowisko okienkowe
 Name:		twin
 Version:	0.4.4
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://download.sourceforge.net/twin/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/twin/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ncurses.patch
+URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
-BuildRequires:  automake
 BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:	gpm-devel
+BuildRequires:	gtk+-devel
 BuildRequires:	libggi-devel
-BuildRequires:	libgii-devel
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
-URL:		http://twin.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,19 +34,25 @@ It supports a variety of displays:
 %description -l pl
 Twin jest tekstowym ¶rodowiskiem okienkowym - zmienia terminal
 tekstowy w ¶rodowisko podobne do mened¿era okien znanego ze ¶rodowiska
-XWindow.
+X Window.
 
-Mo¿e zostaæ uruchomiony na konsoli linuksowej, w ¶rodowisku XWindows,
-pozwalaj±c na uruchamianie wiele okien terminala.
+Obs³uguje wy¶wietlanie na:
+- terminalach czysto tekstowych (dowolnym zgodnym z termcap/ncurses,
+  konsoli Linuksa, w³asnym emulatorze Twin)
+- w systemie X Window, gdzie mo¿e byæ u¿ywany jako wielookienkowy
+  xterm
+- sobie samym (mo¿na wy¶wietlaæ twin na innym twin)
+- twdisplay, czyli ogólnym, prze¼roczystym sieciowo kliencie, u¿ywanym
+  do do³±czania i od³±czania w locie.
 
 %package devel
-Summary:	Header files and etc for develop twin applications
+Summary:	Header files etc for developing twin applications
 Summary(pl):	Pliki nag³ówkowe dla twin
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
-Header files and etc for develop twin applications.
+Header files etc for developing twin applications.
 
 %description devel -l pl
 Pliki nag³ówkowe i inne potrzebne do tworzenia programów opartych o
@@ -74,7 +80,7 @@ aclocal
 %{__autoconf}
 
 %configure
-%{__make}
+%{__make} CFLAGS="%{rpmcflags} -Wall -D_GNU_SOURCE"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -92,18 +98,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc BUGS Changelog.txt README TODO docs/{Compatibility,Philosophy,Tutorial}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%dir %{_libdir}/twin/
+%dir %{_libdir}/TT
+%dir %{_libdir}/TT/HW
+%attr(755,root,root) %{_libdir}/TT/HW/*.so*
+%dir %{_libdir}/twin
+%{_libdir}/twin/system.*
 %dir %{_libdir}/twin/modules
+%attr(755,root,root) %{_libdir}/twin/modules/*.so*
 %dir %{_libdir}/twin/modules/HW
-%attr(755,root,root) %{_libdir}/twin/modules/*.so
-%attr(755,root,root) %{_libdir}/twin/modules/HW/*.so
+%attr(755,root,root) %{_libdir}/twin/modules/HW/*.so*
+%dir %{_datadir}/twin
+%dir %{_datadir}/twin/themes
+%dir %{_datadir}/twin/themes/hw_gfx
+%{_datadir}/twin/themes/hw_gfx/*.xpm
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz docs/*.gz clients/README*
+%doc docs/libTw.txt clients/README.twsetroot
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
 
