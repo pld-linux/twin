@@ -21,16 +21,17 @@ Twin is a windowing environment with mouse support, window manager,
 terminal emulator and networked clients, all inside a text display.
 
 It supports a variety of displays:
-- plain text terminals (any termcap/ncurses compatible terminal,
-  Linux console, twin's own terminal emulator);
+- plain text terminals (any termcap/ncurses compatible terminal, Linux
+  console, twin's own terminal emulator);
 - X11, where it can be used as a multi-window xterm;
 - itself (you can display a twin on another twin);
-- twdisplay, a general network-transparent display client, used
-  to attach/detach more displays on-the-fly.
+- twdisplay, a general network-transparent display client, used to
+  attach/detach more displays on-the-fly.
 
 %description -l pl
-Twin jest tekstowym ¶rodowiskiem okienkowym - zmienia terminal tekstowy
-w ¶rodowisko podobne do mened¿era okien znanego ze ¶rodowiska XWindow.
+Twin jest tekstowym ¶rodowiskiem okienkowym - zmienia terminal
+tekstowy w ¶rodowisko podobne do mened¿era okien znanego ze ¶rodowiska
+XWindow.
 
 Mo¿e zostaæ uruchomiony na konsoli linuksowej, w ¶rodowisku XWindows,
 pozwalaj±c na uruchamianie wiele okien terminala.
@@ -44,7 +45,7 @@ Requires:	%{name} = %{version}
 %description devel
 Header files and etc for develop twin applications.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i inne potrzebne do tworzenia programów opartych o
 twin.
 
@@ -57,7 +58,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static twin libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteki statyczne twin.
 
 %prep
