@@ -72,16 +72,16 @@ Static twin libraries.
 Biblioteki statyczne twin.
 
 %package TT-hw-gtk
-Summary:	TT gtk driver for twin
-Summary(pl):	Sterownik TT gtk do twin
+Summary:	TT GTK+ driver for twin
+Summary(pl):	Sterownik TT GTK+ do twin
 Group:		Libraries
 Requires:	%{name} = %{version}
 
 %description TT-hw-gtk
-gtk target driver for twin's TT library.
+GTK+ target driver for twin's TT library.
 
 %description TT-hw-gtk -l pl
-Sterownik wyj¶cia gtk do biblioteki TT z twin.
+Sterownik wyj¶cia GTK+ do biblioteki TT z twin.
 
 %package hw-X11
 Summary:	X11 driver for twin
