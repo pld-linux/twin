@@ -1,0 +1,194 @@
+diff -Nru twin-0.3.7/MakeRules twin-0.3.7.new/MakeRules
+--- twin-0.3.7/MakeRules	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/MakeRules	Thu Feb 22 04:40:29 2001
+@@ -3,7 +3,18 @@
+ #
+ 
+ # set install directory
+-DESTDIR=/usr/local
++
++sysconfdir = /etc
++prefix = /usr
++bindir = $(prefix)/bin
++libdir = $(prefix)/lib
++datadir = $(prefix)/share
++mandir = $(datadir)/man
++includedir = $(prefix)/include
++
++DESTDIR=
++
++INSTALL=install
+ 
+ # choose your favorite C compiler
+ CC=gcc
+diff -Nru twin-0.3.7/Makefile twin-0.3.7.new/Makefile
+--- twin-0.3.7/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/Makefile	Thu Feb 22 04:22:49 2001
+@@ -22,10 +22,11 @@
+ 
+ ifneq ($(CONF_SOCKET),n)
+   install-lib:
+-	$(MAKE) install -C lib
+-	$(CP) include/libTw*.h $(DESTDIR)/include
++	$(MAKE) install -C lib DESTDIR=$(DESTDIR)
++	$(INSTALL) -d $(DESTDIR)$(includedir)
++	$(INSTALL) include/libTw*.h $(DESTDIR)$(includedir)
+   install-clients:
+-	$(MAKE) install -C clients
++	$(MAKE) install -C clients DESTDIR=$(DESTDIR)
+ else
+   install-lib:
+   install-clients:
+@@ -39,13 +40,10 @@
+ 	
+ #
+ install: all install-lib install-clients
+-	$(MAKE) install -C docs
+-	$(MAKE) install -C server
+-	if [ -f $(DESTDIR)/lib/twin/system.twinrc ]; then \
+-	   $(CP) $(DESTDIR)/lib/twin/system.twinrc $(DESTDIR)/lib/twin/system.twinrc.bak; \
+-	fi && \
+-	$(CP) system.twinrc $(DESTDIR)/lib/twin && \
+-	$(LN) system.twinrc $(DESTDIR)/lib/twin/.twinrc
++	$(MAKE) install -C docs DESTDIR=$(DESTDIR)
++	$(MAKE) install -C server DESTDIR=$(DESTDIR)
++	$(INSTALL) -d $(DESTDIR)$(sysconfdir)
++	$(INSTALL) system.twinrc $(DESTDIR)$(sysconfdir)
+ 	@echo [1m ; \
+ 	 echo If this is the first time you installed twin $(TWIN_VERSION_STR) ; \
+ 	 echo you probably need to run \"ldconfig\" now. ; \
+diff -Nru twin-0.3.7/clients/Makefile twin-0.3.7.new/clients/Makefile
+--- twin-0.3.7/clients/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/clients/Makefile	Thu Feb 22 05:58:46 2001
+@@ -49,8 +49,9 @@
+ Torture:
+ 
+ install:
+-	$(CP) $(BINS) */tw* $(DESTDIR)/bin 
+-	$(LN) twattach $(DESTDIR)/bin/twdetach
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) $(BINS) */tw* $(DESTDIR)$(bindir)
++	$(LN) twattach $(DESTDIR)$(bindir)/twdetach
+ 
+ clean:
+ 	rm -f .*.flags .*.link gmon.out core $(OBJS) $(BINS) twdetach
+diff -Nru twin-0.3.7/contrib/Makefile twin-0.3.7.new/contrib/Makefile
+--- twin-0.3.7/contrib/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/contrib/Makefile	Thu Feb 22 04:09:34 2001
+@@ -39,7 +39,8 @@
+ endif
+ 
+ install:
+-	$(CP) $(BINS) $(DESTDIR)/bin 
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) $(BINS) $(DESTDIR)$(bindir)
+ 
+ clean:
+ 	rm -f .*.flags .*.link gmon.out core $(OBJS) $(BINS)
+diff -Nru twin-0.3.7/docs/Makefile twin-0.3.7.new/docs/Makefile
+--- twin-0.3.7/docs/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/docs/Makefile	Thu Feb 22 04:11:02 2001
+@@ -40,10 +40,5 @@
+ clean:
+ 
+ install:
+-	if [ -d $(DESTDIR)/share/doc ]; then \
+-	  $(MKDIR) $(DESTDIR)/share/doc/twin/docs && \
+-	  $(CP) $(DOCS) $(DESTDIR)/share/doc/twin/docs; \
+-	  cd $(TOPDIR) && \
+-	  $(CP) $(TOPDOCS) $(DESTDIR)/share/doc/twin; \
+-	fi
+-
++	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
++	$(INSTALL) twin.1 $(DESTDIR)$(mandir)/man1
+diff -Nru twin-0.3.7/lib/Makefile twin-0.3.7.new/lib/Makefile
+--- twin-0.3.7/lib/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/lib/Makefile	Thu Feb 22 05:50:54 2001
+@@ -3,6 +3,18 @@
+ #
+ TOPDIR=..
+ 
++sysconfdir = /etc
++prefix = /usr
++bindir = $(prefix)/bin
++libdir = $(prefix)/lib
++datadir = $(prefix)/share
++mandir = $(datadir)/man
++includedir = $(prefix)/include
++
++DESTDIR=
++
++INSTALL=install
++
+ all: everything
+ 
+ VERSION=2.0.4
+@@ -77,12 +89,13 @@
+ Torture: torture
+ 
+ install-real:
++	$(INSTALL) -d $(DESTDIR)$(libdir)
+ 	if [ -f libTw.so.$(VERSION) ]; then \
+-	  $(CP) libTw.so.$(VERSION) $(DESTDIR)/lib ; \
+-	  $(LN) libTw.so.$(VERSION) $(DESTDIR)/lib/libTw.so.$(SO_VER) ; \
+-	  $(LN) libTw.so.$(SO_VER)  $(DESTDIR)/lib/libTw.so ; \
++		$(INSTALL) libTw.so.$(VERSION) $(DESTDIR)$(libdir); \
++		$(LN) libTw.so.$(VERSION) $(DESTDIR)$(libdir)/libTw.so.$(SO_VER); \
++		$(LN) libTw.so.$(SO_VER)  $(DESTDIR)$(libdir)/libTw.so; \
+ 	else \
+-	  $(CP) libTw.a $(DESTDIR)/lib ; \
++		$(INSTALL) libTw.a $(DESTDIR)$(libdir); \
+ 	fi
+ 	
+ clean:
+diff -Nru twin-0.3.7/server/HW/Makefile twin-0.3.7.new/server/HW/Makefile
+--- twin-0.3.7/server/HW/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/server/HW/Makefile	Thu Feb 22 04:18:58 2001
+@@ -141,7 +141,7 @@
+ 
+ install:
+ 	if [ "$(MODBINS)" ]; then \
+-	  $(MKDIR) $(DESTDIR)/lib/twin/modules/HW; \
+-	  $(CP) $(MODBINS) $(DESTDIR)/lib/twin/modules/HW; \
+-	  $(LN) hw_X11.so $(DESTDIR)/lib/twin/modules/HW/hw_X.so; \
++	  $(INSTALL) -d $(DESTDIR)$(libdir)/twin/modules/HW; \
++	  $(INSTALL) $(MODBINS) $(DESTDIR)$(libdir)/twin/modules/HW; \
++	  $(LN) hw_X11.so $(DESTDIR)$(libdir)/twin/modules/HW/hw_X.so; \
+ 	fi
+diff -Nru twin-0.3.7/server/Makefile twin-0.3.7.new/server/Makefile
+--- twin-0.3.7/server/Makefile	Thu Feb 22 06:06:45 2001
++++ twin-0.3.7.new/server/Makefile	Thu Feb 22 06:07:02 2001
+@@ -5,6 +5,9 @@
+ 
+ TOPDIR=..
+ 
++prefix = /usr
++libdir = $(prefix)/lib
++
+ BASEOBJS=data.o builtin.o methods.o util.o draw.o extensions.o \
+ 	main.o hw_multi.o printk.o resize.o scroller.o remote.o alloc.o
+ HWOBJS=hw.o HW/hw.a
+@@ -236,13 +239,13 @@
+ 	rm -f rcparse_tab.c rcparse_tab.h rcparse_lex.c
+ 
+ install:
+-	$(CP) $(BINS) twstart $(DESTDIR)/bin
+-	$(LN) twin_wrapper $(DESTDIR)/bin/twin
++	$(INSTALL) -d $(DESTDIR)$(bindir) $(DESTDIR)/$(libdir)/twin/modules
++	$(INSTALL) $(BINS) twstart $(DESTDIR)$(bindir)
++	$(LN) twin_wrapper $(DESTDIR)$(bindir)/twin
+ 	if [ "$(MODBINS)" ]; then \
+-	  $(MKDIR) $(DESTDIR)/lib/twin/modules; \
+-	  $(CP) $(MODBINS) $(DESTDIR)/lib/twin/modules; \
++	  $(INSTALL) $(MODBINS) $(DESTDIR)$(libdir)/twin/modules; \
+ 	fi
+-	$(MAKE) install -C HW
++	$(MAKE) install -C HW DESTDIR=$(DESTDIR)
+ 	@if [ "$(SETPRIV)" ]; then \
+ 	  echo [1m ; \
+ 	  echo Twin may need special privileges for the terminal emulator to work. ; \
+@@ -253,4 +256,3 @@
+ 	  echo you will grant special privileges to twin AT YOUR OWN RISK. ; \
+ 	  echo [0m ; \
+ 	fi
+-
