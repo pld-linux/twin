@@ -6,7 +6,6 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/twin/%{name}-%{version}.tar.gz
-Patch0:		%{name}-ncurses.patch
 URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:  autoconf
@@ -70,6 +69,54 @@ Static twin libraries.
 %description static -l pl
 Biblioteki statyczne twin.
 
+%package TT-hw-gtk
+Summary:	TT gtk driver for twin
+Summary(pl):	Sterownik TT gtk do twin
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description TT-hw-gtk
+gtk target driver for twin's TT library.
+
+%description TT-hw-gtk -l pl
+Sterownik wyj¶cia gtk do biblioteki TT z twin.
+
+%package hw-X11
+Summary:	X11 driver for twin
+Summary(pl):	Sterownik X11 do twin
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description hw-X11
+X11 driver for twin.
+
+%description hw-X11 -l pl
+Sterownik X11 do twin.
+
+%package hw-ggi
+Summary:	GGI driver for twin
+Summary(pl):	Sterownik GGI do twin
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description hw-ggi
+GGI driver for twin.
+
+%description hw-ggi -l pl
+Sterownik GGI do twin.
+
+%package hw-tty
+Summary:	TTY driver with GPM support for twin
+Summary(pl):	Sterownik TTY z obs³ug± GPM-a do twin
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description hw-tty
+TTY driver with mouse support through GPM for twin.
+
+%description hw-tty -l pl
+Sterownik TTY z obs³ug± myszy przez GPM do twin.
+
 %prep
 %setup -q
 
@@ -104,17 +151,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/TT
 %dir %{_libdir}/TT/HW
-%attr(755,root,root) %{_libdir}/TT/HW/*.so*
+%attr(755,root,root) %{_libdir}/TT/HW/hw_twin.so*
+%attr(755,root,root) %{_libdir}/TT/HW/hw_xml.so*
 %dir %{_libdir}/twin
 %{_libdir}/twin/system.*
 %dir %{_libdir}/twin/modules
 %attr(755,root,root) %{_libdir}/twin/modules/*.so*
 %dir %{_libdir}/twin/modules/HW
-%attr(755,root,root) %{_libdir}/twin/modules/HW/*.so*
+%attr(755,root,root) %{_libdir}/twin/modules/HW/hw_display.so*
+%attr(755,root,root) %{_libdir}/twin/modules/HW/hw_twin.so*
 %dir %{_datadir}/twin
 %dir %{_datadir}/twin/themes
-%dir %{_datadir}/twin/themes/hw_gfx
-%{_datadir}/twin/themes/hw_gfx/*.xpm
 %{_mandir}/man1/*
 
 %files devel
@@ -126,3 +173,23 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files TT-hw-gtk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/TT/HW/hw_gtk.so*
+
+%files hw-X11
+%defattr(644,root,root,755)
+%doc server/themes/hw_gfx/README
+%attr(755,root,root) %{_libdir}/twin/modules/HW/hw_X*.so*
+%attr(755,root,root) %{_libdir}/twin/modules/HW/hw_gfx.so*
+%dir %{_datadir}/twin/themes/hw_gfx
+%{_datadir}/twin/themes/hw_gfx/*.xpm
+
+%files hw-ggi
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/twin/modules/HW/hw_ggi.so*
+
+%files hw-tty
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/twin/modules/HW/hw_tty.so*
