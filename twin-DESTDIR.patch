@@ -1,6 +1,6 @@
-diff -Nru twin-0.3.7/MakeRules twin-0.3.7.new/MakeRules
---- twin-0.3.7/MakeRules	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/MakeRules	Thu Feb 22 04:40:29 2001
+diff -urN twin-0.3.7.org/MakeRules twin-0.3.7/MakeRules
+--- twin-0.3.7.org/MakeRules	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/MakeRules	Thu Feb 22 19:16:44 2001
 @@ -3,7 +3,18 @@
  #
  
@@ -21,9 +21,9 @@ diff -Nru twin-0.3.7/MakeRules twin-0.3.7.new/MakeRules
  
  # choose your favorite C compiler
  CC=gcc
-diff -Nru twin-0.3.7/Makefile twin-0.3.7.new/Makefile
---- twin-0.3.7/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/Makefile	Thu Feb 22 04:22:49 2001
+diff -urN twin-0.3.7.org/Makefile twin-0.3.7/Makefile
+--- twin-0.3.7.org/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/Makefile	Thu Feb 22 19:08:41 2001
 @@ -22,10 +22,11 @@
  
  ifneq ($(CONF_SOCKET),n)
@@ -57,9 +57,9 @@ diff -Nru twin-0.3.7/Makefile twin-0.3.7.new/Makefile
  	@echo [1m ; \
  	 echo If this is the first time you installed twin $(TWIN_VERSION_STR) ; \
  	 echo you probably need to run \"ldconfig\" now. ; \
-diff -Nru twin-0.3.7/clients/Makefile twin-0.3.7.new/clients/Makefile
---- twin-0.3.7/clients/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/clients/Makefile	Thu Feb 22 05:58:46 2001
+diff -urN twin-0.3.7.org/clients/Makefile twin-0.3.7/clients/Makefile
+--- twin-0.3.7.org/clients/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/clients/Makefile	Thu Feb 22 19:08:41 2001
 @@ -49,8 +49,9 @@
  Torture:
  
@@ -72,9 +72,9 @@ diff -Nru twin-0.3.7/clients/Makefile twin-0.3.7.new/clients/Makefile
  
  clean:
  	rm -f .*.flags .*.link gmon.out core $(OBJS) $(BINS) twdetach
-diff -Nru twin-0.3.7/contrib/Makefile twin-0.3.7.new/contrib/Makefile
---- twin-0.3.7/contrib/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/contrib/Makefile	Thu Feb 22 04:09:34 2001
+diff -urN twin-0.3.7.org/contrib/Makefile twin-0.3.7/contrib/Makefile
+--- twin-0.3.7.org/contrib/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/contrib/Makefile	Thu Feb 22 19:08:41 2001
 @@ -39,7 +39,8 @@
  endif
  
@@ -85,9 +85,9 @@ diff -Nru twin-0.3.7/contrib/Makefile twin-0.3.7.new/contrib/Makefile
  
  clean:
  	rm -f .*.flags .*.link gmon.out core $(OBJS) $(BINS)
-diff -Nru twin-0.3.7/docs/Makefile twin-0.3.7.new/docs/Makefile
---- twin-0.3.7/docs/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/docs/Makefile	Thu Feb 22 04:11:02 2001
+diff -urN twin-0.3.7.org/docs/Makefile twin-0.3.7/docs/Makefile
+--- twin-0.3.7.org/docs/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/docs/Makefile	Thu Feb 22 19:08:41 2001
 @@ -40,10 +40,5 @@
  clean:
  
@@ -101,9 +101,9 @@ diff -Nru twin-0.3.7/docs/Makefile twin-0.3.7.new/docs/Makefile
 -
 +	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
 +	$(INSTALL) twin.1 $(DESTDIR)$(mandir)/man1
-diff -Nru twin-0.3.7/lib/Makefile twin-0.3.7.new/lib/Makefile
---- twin-0.3.7/lib/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/lib/Makefile	Thu Feb 22 05:50:54 2001
+diff -urN twin-0.3.7.org/lib/Makefile twin-0.3.7/lib/Makefile
+--- twin-0.3.7.org/lib/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/lib/Makefile	Thu Feb 22 19:08:41 2001
 @@ -3,6 +3,18 @@
  #
  TOPDIR=..
@@ -141,9 +141,9 @@ diff -Nru twin-0.3.7/lib/Makefile twin-0.3.7.new/lib/Makefile
  	fi
  	
  clean:
-diff -Nru twin-0.3.7/server/HW/Makefile twin-0.3.7.new/server/HW/Makefile
---- twin-0.3.7/server/HW/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/server/HW/Makefile	Thu Feb 22 04:18:58 2001
+diff -urN twin-0.3.7.org/server/HW/Makefile twin-0.3.7/server/HW/Makefile
+--- twin-0.3.7.org/server/HW/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/server/HW/Makefile	Thu Feb 22 19:08:41 2001
 @@ -141,7 +141,7 @@
  
  install:
@@ -155,19 +155,34 @@ diff -Nru twin-0.3.7/server/HW/Makefile twin-0.3.7.new/server/HW/Makefile
 +	  $(INSTALL) $(MODBINS) $(DESTDIR)$(libdir)/twin/modules/HW; \
 +	  $(LN) hw_X11.so $(DESTDIR)$(libdir)/twin/modules/HW/hw_X.so; \
  	fi
-diff -Nru twin-0.3.7/server/Makefile twin-0.3.7.new/server/Makefile
---- twin-0.3.7/server/Makefile	Thu Feb 22 06:06:45 2001
-+++ twin-0.3.7.new/server/Makefile	Thu Feb 22 06:07:02 2001
-@@ -5,6 +5,9 @@
+diff -urN twin-0.3.7.org/server/Makefile twin-0.3.7/server/Makefile
+--- twin-0.3.7.org/server/Makefile	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/server/Makefile	Thu Feb 22 19:19:03 2001
+@@ -5,6 +5,10 @@
  
  TOPDIR=..
  
 +prefix = /usr
++bindir = $(prefix)/bin
 +libdir = $(prefix)/lib
 +
  BASEOBJS=data.o builtin.o methods.o util.o draw.o extensions.o \
  	main.o hw_multi.o printk.o resize.o scroller.o remote.o alloc.o
  HWOBJS=hw.o HW/hw.a
+@@ -29,10 +33,9 @@
+ BINS=twin_real twin_wrapper
+ MODBINS=
+ 
+-# don't use := here, as DESTDIR is not set yet
+-CFLAGS_data.o=$(strip $(patsubst %,-DDESTDIR=\"%\",$(DESTDIR)))
+-CFLAGS_wrapper.o=$(strip $(patsubst %,-DDESTDIR=\"%\",$(DESTDIR)))
+-CFLAGS_display.o=$(strip $(patsubst %,-DDESTDIR=\"%\",$(DESTDIR)))
++CFLAGS_data.o=-DBINDIR=\"$(bindir)\" -DLIBDIR=\"$(libdir)\"
++CFLAGS_wrapper.o=-DBINDIR=\"$(bindir)\" -DLIBDIR=\"$(libdir)\"
++CFLAGS_display.o=-DBINDIR=\"$(bindir)\" -DLIBDIR=\"$(libdir)\"
+ 
+ LDFLAGS_wm.so=-lc -shared
+ LDFLAGS_rcparse.so=-lc -shared
 @@ -236,13 +239,13 @@
  	rm -f rcparse_tab.c rcparse_tab.h rcparse_lex.c
  
@@ -192,3 +207,47 @@ diff -Nru twin-0.3.7/server/Makefile twin-0.3.7.new/server/Makefile
  	  echo [0m ; \
  	fi
 -
+diff -urN twin-0.3.7.org/server/data.c twin-0.3.7/server/data.c
+--- twin-0.3.7.org/server/data.c	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/server/data.c	Thu Feb 22 19:09:28 2001
+@@ -20,9 +20,9 @@
+ 
+ /* setup configuration paths */
+ 
+-#ifdef DESTDIR
+-CONST byte *conf_destdir_lib_twin = DESTDIR "/lib/twin";
+-CONST byte *conf_destdir_lib_twin_modules_ = DESTDIR "/lib/twin/modules/";
++#ifdef LIBDIR
++CONST byte *conf_destdir_lib_twin = LIBDIR "/twin";
++CONST byte *conf_destdir_lib_twin_modules_ = LIBDIR "/twin/modules/";
+ #else
+ CONST byte *conf_destdir_lib_twin = ".";
+ CONST byte *conf_destdir_lib_twin_modules_ = "./";
+diff -urN twin-0.3.7.org/server/display.c twin-0.3.7/server/display.c
+--- twin-0.3.7.org/server/display.c	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/server/display.c	Thu Feb 22 19:09:48 2001
+@@ -59,8 +59,8 @@
+ 
+ #ifdef CONF__MODULES
+ 
+-# ifdef DESTDIR
+-#  define DIR_LIB_TWIN_MODULES_ DESTDIR "/lib/twin/modules/"
++# ifdef LIBDIR
++#  define DIR_LIB_TWIN_MODULES_ LIBDIR "/twin/modules/"
+ # else
+ #  define DIR_LIB_TWIN_MODULES_ "./"
+ # endif
+diff -urN twin-0.3.7.org/server/wrapper.c twin-0.3.7/server/wrapper.c
+--- twin-0.3.7.org/server/wrapper.c	Thu Feb 22 19:08:27 2001
++++ twin-0.3.7/server/wrapper.c	Thu Feb 22 19:10:10 2001
+@@ -11,8 +11,8 @@
+ #include <string.h>
+ 
+ int main(int argc, char *argv[]) {
+-#ifdef DESTDIR
+-    argv[0] = DESTDIR "/bin/twin_real";
++#ifdef BINDIR
++    argv[0] = BINDIR "/twin_real";
+ #else
+     argv[0] = "./twin_real";
+ #endif
