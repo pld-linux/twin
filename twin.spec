@@ -6,7 +6,12 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
+Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	‚…¬Ã…œ‘≈À…
+Group(uk):	‚¶¬Ã¶œ‘≈À…
 Source0:	http://download.sourceforge.net/twin/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ncurses.patch
 BuildRequires:	XFree86-devel
@@ -42,6 +47,8 @@ Summary:	Header files and etc for develop twin applications
 Summary(pl):	Pliki nag≥Ûwkowe dla twin
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -57,6 +64,8 @@ Summary:	Static twin libraries
 Summary(pl):	Biblioteki statyczne twin
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
