@@ -1,8 +1,8 @@
 Summary:	Twin - a windowing environment
 Summary(pl):	Tekstowe ¶rodowisko okienkowe
 Name:		twin
-Version:	0.4.5
-Release:	2
+Version:	0.4.6
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/twin/%{name}-%{version}.tar.gz
