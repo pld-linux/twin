@@ -32,7 +32,7 @@ It supports a variety of displays:
 
 %description -l pl
 Twin jest tekstowym ¶rodowiskiem okienkowym - zmienia terminal
-tekstowy w ¶rodowisko podobne do mened¿era okien znanego ze ¶rodowiska
+tekstowy w ¶rodowisko podobne do zarz±dcy okien znanego ze ¶rodowiska
 X Window.
 
 Obs³uguje wy¶wietlanie na:
@@ -41,7 +41,7 @@ Obs³uguje wy¶wietlanie na:
 - w systemie X Window, gdzie mo¿e byæ u¿ywany jako wielookienkowy
   xterm
 - sobie samym (mo¿na wy¶wietlaæ twin na innym twin)
-- twdisplay, czyli ogólnym, prze¼roczystym sieciowo kliencie, u¿ywanym
+- twdisplay, czyli ogólnym, przezroczystym sieciowo kliencie, u¿ywanym
   do do³±czania i od³±czania w locie.
 
 %package devel
