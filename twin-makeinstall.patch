@@ -1,0 +1,12 @@
+diff -Nru twin-0.3.8/Makefile twin-0.3.8.new/Makefile
+--- twin-0.3.8/Makefile	Sun Mar 11 21:36:45 2001
++++ twin-0.3.8.new/Makefile	Sun Mar 11 21:37:55 2001
+@@ -57,7 +57,7 @@
+ 	$(MAKE) Torture -C clients
+ 	
+ #
+-install: all install-lib install-clients
++install: install-lib install-clients
+ 	$(MAKE) install -C docs DESTDIR=$(DESTDIR) 
+ 	$(MAKE) install -C server DESTDIR=$(DESTDIR) 
+ 	$(INSTALL) -d $(DESTDIR)$(libdir)/twin
