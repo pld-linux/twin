@@ -105,11 +105,11 @@ EOF
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT%{_mandir}/man1
+install -d $RPM_BUILD_ROOT%{_mandir}/man1
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-%{__install} docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 gzip -9nf BUGS Changelog.txt README README.porting TODO twin-*.lsm \
 	docs/{Configure,libTw++.txt,libTw.txt,Tutorial} clients/README.twsetroot
