@@ -13,6 +13,7 @@ Patch2:		%{name}-optflags.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	gpm-devel
 BuildRequires:	libggi-devel
+BuildRequires:	libgii-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
 URL:		http://twin.sourceforge.net/
@@ -108,7 +109,7 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man1
 install docs/twin.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 gzip -9nf BUGS Changelog.txt README README.porting TODO twin-0.3.7.lsm \
-	docs/{Configure,libTw++.txt,libTw.txt}
+	docs/{Configure,libTw++.txt,libTw.txt,Tutorial} clients/README.twsetroot
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz docs/*.gz
+%doc *.gz docs/*.gz clients/README*
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
 
