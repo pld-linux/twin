@@ -1,5 +1,5 @@
 Summary:	Twin - a windowing environment
-Summary:	Tekstowe ¶rodowisko okienkowe
+Summary(pl):	Tekstowe ¶rodowisko okienkowe
 Name:		twin
 Version:	0.4.5
 Release:	2
@@ -8,8 +8,8 @@ Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/twin/%{name}-%{version}.tar.gz
 URL:		http://twin.sourceforge.net/
 BuildRequires:	XFree86-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gpm-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libggi-devel
