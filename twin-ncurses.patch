@@ -1,0 +1,12 @@
+diff -Nru twin-0.3.7/server/HW/Makefile twin-0.3.7.new/server/HW/Makefile
+--- twin-0.3.7/server/HW/Makefile	Tue Jan  9 14:50:44 2001
++++ twin-0.3.7.new/server/HW/Makefile	Thu Feb 22 03:47:01 2001
+@@ -5,7 +5,7 @@
+ 
+ TOPDIR=../..
+ 
+-CFLAGS+=-I..
++CFLAGS+=-I.. -I/usr/include/ncurses
+ 
+ BASEOBJS=
+ TTYOBJS=hw_tty.o
