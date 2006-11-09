@@ -1,0 +1,1 @@
+- release 2: added %{_bibdir}/* to %files list.
