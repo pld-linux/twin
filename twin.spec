@@ -50,7 +50,7 @@ Obs³uguje wy¶wietlanie na:
 Summary:	Header files etc for developing twin applications
 Summary(pl):	Pliki nag³ówkowe dla twin
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files etc for developing twin applications.
@@ -63,7 +63,7 @@ twin.
 Summary:	Static twin libraries
 Summary(pl):	Biblioteki statyczne twin
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static twin libraries.
@@ -75,7 +75,7 @@ Biblioteki statyczne twin.
 Summary:	TT GTK+ driver for twin
 Summary(pl):	Sterownik TT GTK+ do twin
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description TT-hw-gtk
 GTK+ target driver for twin's TT library.
@@ -87,7 +87,7 @@ Sterownik wyj¶cia GTK+ do biblioteki TT z twin.
 Summary:	X11 driver for twin
 Summary(pl):	Sterownik X11 do twin
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description hw-X11
 X11 driver for twin.
@@ -99,7 +99,7 @@ Sterownik X11 do twin.
 Summary:	GGI driver for twin
 Summary(pl):	Sterownik GGI do twin
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description hw-ggi
 GGI driver for twin.
@@ -111,7 +111,7 @@ Sterownik GGI do twin.
 Summary:	TTY driver with GPM support for twin
 Summary(pl):	Sterownik TTY z obs³ug± GPM-a do twin
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description hw-tty
 TTY driver with mouse support through GPM for twin.
