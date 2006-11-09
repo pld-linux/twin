@@ -1,0 +1,1 @@
+- release 4: use ggi, gii only on %{ix86}.
