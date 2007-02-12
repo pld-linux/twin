@@ -1,5 +1,5 @@
 Summary:	Twin - a windowing environment
-Summary(pl.UTF-8):   Tekstowe środowisko okienkowe
+Summary(pl.UTF-8):	Tekstowe środowisko okienkowe
 Name:		twin
 Version:	0.5.1
 Release:	2
@@ -48,7 +48,7 @@ Obsługuje wyświetlanie na:
 
 %package devel
 Summary:	Header files etc for developing twin applications
-Summary(pl.UTF-8):   Pliki nagłówkowe dla twin
+Summary(pl.UTF-8):	Pliki nagłówkowe dla twin
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -61,7 +61,7 @@ twin.
 
 %package static
 Summary:	Static twin libraries
-Summary(pl.UTF-8):   Biblioteki statyczne twin
+Summary(pl.UTF-8):	Biblioteki statyczne twin
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -73,7 +73,7 @@ Biblioteki statyczne twin.
 
 %package TT-hw-gtk
 Summary:	TT GTK+ driver for twin
-Summary(pl.UTF-8):   Sterownik TT GTK+ do twin
+Summary(pl.UTF-8):	Sterownik TT GTK+ do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -85,7 +85,7 @@ Sterownik wyjścia GTK+ do biblioteki TT z twin.
 
 %package hw-X11
 Summary:	X11 driver for twin
-Summary(pl.UTF-8):   Sterownik X11 do twin
+Summary(pl.UTF-8):	Sterownik X11 do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -97,7 +97,7 @@ Sterownik X11 do twin.
 
 %package hw-ggi
 Summary:	GGI driver for twin
-Summary(pl.UTF-8):   Sterownik GGI do twin
+Summary(pl.UTF-8):	Sterownik GGI do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -109,7 +109,7 @@ Sterownik GGI do twin.
 
 %package hw-tty
 Summary:	TTY driver with GPM support for twin
-Summary(pl.UTF-8):   Sterownik TTY z obsługą GPM-a do twin
+Summary(pl.UTF-8):	Sterownik TTY z obsługą GPM-a do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
