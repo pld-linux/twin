@@ -1,5 +1,5 @@
 Summary:	Twin - a windowing environment
-Summary(pl):	Tekstowe ∂rodowisko okienkowe
+Summary(pl.UTF-8):   Tekstowe ≈õrodowisko okienkowe
 Name:		twin
 Version:	0.5.1
 Release:	2
@@ -32,92 +32,92 @@ It supports a variety of displays:
 - twdisplay, a general network-transparent display client, used to
   attach/detach more displays on-the-fly.
 
-%description -l pl
-Twin jest tekstowym ∂rodowiskiem okienkowym - zmienia terminal
-tekstowy w ∂rodowisko podobne do zarz±dcy okien znanego ze ∂rodowiska
+%description -l pl.UTF-8
+Twin jest tekstowym ≈õrodowiskiem okienkowym - zmienia terminal
+tekstowy w ≈õrodowisko podobne do zarzƒÖdcy okien znanego ze ≈õrodowiska
 X Window.
 
-Obs≥uguje wy∂wietlanie na:
+Obs≈Çuguje wy≈õwietlanie na:
 - terminalach czysto tekstowych (dowolnym zgodnym z termcap/ncurses,
-  konsoli Linuksa, w≥asnym emulatorze Twin)
-- w systemie X Window, gdzie moøe byÊ uøywany jako wielookienkowy
+  konsoli Linuksa, w≈Çasnym emulatorze Twin)
+- w systemie X Window, gdzie mo≈ºe byƒá u≈ºywany jako wielookienkowy
   xterm
-- sobie samym (moøna wy∂wietlaÊ twin na innym twin)
-- twdisplay, czyli ogÛlnym, przezroczystym sieciowo kliencie, uøywanym
-  do do≥±czania i od≥±czania w locie.
+- sobie samym (mo≈ºna wy≈õwietlaƒá twin na innym twin)
+- twdisplay, czyli og√≥lnym, przezroczystym sieciowo kliencie, u≈ºywanym
+  do do≈ÇƒÖczania i od≈ÇƒÖczania w locie.
 
 %package devel
 Summary:	Header files etc for developing twin applications
-Summary(pl):	Pliki nag≥Ûwkowe dla twin
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe dla twin
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files etc for developing twin applications.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe i inne potrzebne do tworzenia programÛw opartych o
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe i inne potrzebne do tworzenia program√≥w opartych o
 twin.
 
 %package static
 Summary:	Static twin libraries
-Summary(pl):	Biblioteki statyczne twin
+Summary(pl.UTF-8):   Biblioteki statyczne twin
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static twin libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne twin.
 
 %package TT-hw-gtk
 Summary:	TT GTK+ driver for twin
-Summary(pl):	Sterownik TT GTK+ do twin
+Summary(pl.UTF-8):   Sterownik TT GTK+ do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description TT-hw-gtk
 GTK+ target driver for twin's TT library.
 
-%description TT-hw-gtk -l pl
-Sterownik wyj∂cia GTK+ do biblioteki TT z twin.
+%description TT-hw-gtk -l pl.UTF-8
+Sterownik wyj≈õcia GTK+ do biblioteki TT z twin.
 
 %package hw-X11
 Summary:	X11 driver for twin
-Summary(pl):	Sterownik X11 do twin
+Summary(pl.UTF-8):   Sterownik X11 do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description hw-X11
 X11 driver for twin.
 
-%description hw-X11 -l pl
+%description hw-X11 -l pl.UTF-8
 Sterownik X11 do twin.
 
 %package hw-ggi
 Summary:	GGI driver for twin
-Summary(pl):	Sterownik GGI do twin
+Summary(pl.UTF-8):   Sterownik GGI do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description hw-ggi
 GGI driver for twin.
 
-%description hw-ggi -l pl
+%description hw-ggi -l pl.UTF-8
 Sterownik GGI do twin.
 
 %package hw-tty
 Summary:	TTY driver with GPM support for twin
-Summary(pl):	Sterownik TTY z obs≥ug± GPM-a do twin
+Summary(pl.UTF-8):   Sterownik TTY z obs≈ÇugƒÖ GPM-a do twin
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description hw-tty
 TTY driver with mouse support through GPM for twin.
 
-%description hw-tty -l pl
-Sterownik TTY z obs≥ug± myszy przez GPM do twin.
+%description hw-tty -l pl.UTF-8
+Sterownik TTY z obs≈ÇugƒÖ myszy przez GPM do twin.
 
 %prep
 %setup -q
