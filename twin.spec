@@ -2,21 +2,25 @@ Summary:	Twin - a windowing environment
 Summary(pl.UTF-8):	Tekstowe środowisko okienkowe
 Name:		twin
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/twin/%{name}-%{version}.tar.gz
 # Source0-md5:	46b31e1bdd4fda60336da24034896c53
 Patch0:		%{name}-bitops.patch
+Patch1:		%{name}-ac.patch
+Patch2:		%{name}-declarations.patch
+Patch3:		%{name}-ncursesw.patch
 URL:		http://twin.sourceforge.net/
-BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	bash
 BuildRequires:	gpm-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libggi-devel
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
+BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -122,10 +126,14 @@ Sterownik TTY z obsługą myszy przez GPM do twin.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
+%{__autoheader}
 %{__autoconf}
 %configure
 
