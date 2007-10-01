@@ -1,0 +1,11 @@
+--- twin-0.5.1/configure.in.old	2007-09-30 19:59:16.000000000 +0200
++++ twin-0.5.1/configure.in	2007-09-30 19:59:26.000000000 +0200
+@@ -440,7 +440,7 @@
+ 
+ LIBS=
+ 
+-AC_CHECK_LIB(termcap,tgetent,,AC_CHECK_LIB(ncurses,tgetent))
++AC_CHECK_LIB(termcap,tgetent,,AC_CHECK_LIB(ncursesw,tgetent))
+ 
+ LIBS=
+ 
