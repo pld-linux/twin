@@ -1,0 +1,53 @@
+--- twin-0.5.1/libs/libTw/libTw.c.old	2007-09-30 19:17:27.000000000 +0200
++++ twin-0.5.1/libs/libTw/libTw.c	2007-09-30 19:17:55.000000000 +0200
+@@ -1210,6 +1210,7 @@
+     return (tw_d)0;
+ }
+ 
++static void DeleteAllListeners(tlistener);
+ /* just like all Tw_* functions, this requires LOCK not to be held */
+ /*
+  * Tw_Close() is not completely thread-safe, but it would be useless anyway
+@@ -1220,8 +1221,8 @@
+ /**
+  * closes a server connection
+  */
++
+ void Tw_Close(tw_d TwD) {
+-    static void DeleteAllListeners(tlistener);
+     s_tw_errno *E;
+     byte *q;
+     int i;
+--- twin-0.5.1/server/HW/hw_tty_common/mouse_xterm.h.old	2007-09-30 19:23:02.000000000 +0200
++++ twin-0.5.1/server/HW/hw_tty_common/mouse_xterm.h	2007-09-30 19:24:28.000000000 +0200
+@@ -8,7 +8,7 @@
+  */
+ 
+ static void xterm_QuitMouse(void);
+-static void xterm_MouseEvent(int fd, display_hw hw);
++void xterm_MouseEvent(int fd, display_hw hw);
+ static void xterm_ConfigureMouse(udat resource, byte todefault, udat value);
+ 
+ 
+@@ -97,7 +97,7 @@
+ }
+ 
+ 
+-static void xterm_MouseEvent(int fd, display_hw hw) {
++void xterm_MouseEvent(int fd, display_hw hw) {
+     static dat prev_x, prev_y;
+     udat Buttons = 0, Id;
+     byte *s = xterm_MouseData;
+--- twin-0.5.1/server/HW/hw_tty_common/kbd_stdin.h.old	2007-09-30 19:23:11.000000000 +0200
++++ twin-0.5.1/server/HW/hw_tty_common/kbd_stdin.h	2007-09-30 19:23:48.000000000 +0200
+@@ -273,9 +273,9 @@
+ 
+ 
+ static byte xterm_MouseData[10] = "\033[M#!!!!";
++void xterm_MouseEvent(int, display_hw);
+ 
+ static void stdin_KeyboardEvent(int fd, display_hw hw) {
+-    static void xterm_MouseEvent(int, display_hw);
+     static byte buf[SMALLBUFF];
+     static fd_set rfds;
+     static struct timeval t;
