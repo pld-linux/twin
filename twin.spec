@@ -13,6 +13,7 @@ Patch2:		%{name}-declarations.patch
 Patch3:		%{name}-ncursesw.patch
 Patch4:		%{name}-utf8.patch
 Patch5:		%{name}-dont_strip.patch
+Patch6:		%{name}-raw.patch
 URL:		http://twin.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -133,6 +134,7 @@ Sterownik TTY z obsługą myszy przez GPM do twin.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %{__libtoolize}
