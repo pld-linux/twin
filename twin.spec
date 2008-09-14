@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	Twin - a windowing environment
 Summary(pl.UTF-8):	Tekstowe środowisko okienkowe
 Name:		twin
@@ -143,8 +147,8 @@ Sterownik TTY z obsługą myszy przez GPM do twin.
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
-%configure
-
+%configure \
+	%{!?with_static_libs:--disable-static}
 %{__make} \
 	CFLAGS="%{rpmcflags} -Wall -D_GNU_SOURCE"
 
@@ -191,9 +195,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
 
 %files TT-hw-gtk
 %defattr(644,root,root,755)
