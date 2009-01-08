@@ -172,7 +172,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc BUGS Changelog.txt README docs/{Compatibility,Philosophy,Tutorial}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libTT.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libTT.so.0
+%attr(755,root,root) %{_libdir}/libTutf.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libTutf.so.0
+%attr(755,root,root) %{_libdir}/libTw.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libTw.so.4
 %dir %{_libdir}/TT
 %dir %{_libdir}/TT/modules
 %dir %{_libdir}/TT/modules/HW
@@ -192,13 +197,17 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc docs/{diagram.txt,libTT-design.txt,libTw.txt,ltrace.conf} clients/README.twsetroot
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libTT.so
+%attr(755,root,root) %{_libdir}/libTutf.so
+%attr(755,root,root) %{_libdir}/libTw.so
 %{_includedir}/*
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libTT.a
+%{_libdir}/libTutf.a
+%{_libdir}/libTw.a
 %endif
 
 %files TT-hw-gtk
