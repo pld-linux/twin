@@ -1,0 +1,22 @@
+--- twin-0.5.1/clients/mapscrn/m_version.h~	2023-02-03 07:37:02.000000000 +0100
++++ twin-0.5.1/clients/mapscrn/m_version.h	2023-02-03 07:37:24.479832220 +0100
+@@ -2,7 +2,7 @@
+ 
+ #define VERSION "1.06"
+ 
+-char *progname;
++extern char *progname;
+ 
+ TW_INLINE void
+ set_progname(char *name) {
+--- twin-0.5.1/clients/mapscrn/mapscrn.c~	2003-05-31 09:52:10.000000000 +0200
++++ twin-0.5.1/clients/mapscrn/mapscrn.c	2023-02-03 07:37:44.776498888 +0100
+@@ -41,6 +41,8 @@ static int ctoi (unsigned char *);
+ static char *mapdirpath[] = { "", DATADIR "/" TRANSDIR "/", 0 };
+ static char *mapsuffixes[] = { "", ".trans", "_to_uni.trans", ".acm", 0 };
+ 
++char *progname;
++
+ #ifdef MAIN
+ #include "getfd.h"
+ #include "m_version.h"
