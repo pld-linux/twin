@@ -1,11 +1,11 @@
---- twin-0.5.1/configure.in.old	2007-09-30 19:59:16.000000000 +0200
-+++ twin-0.5.1/configure.in	2007-09-30 19:59:26.000000000 +0200
-@@ -440,7 +440,7 @@
- 
+--- twin-0.8.1/configure.ac.orig	2019-12-23 21:33:52.000000000 +0100
++++ twin-0.8.1/configure.ac	2023-02-05 16:57:46.023807167 +0100
+@@ -193,7 +193,7 @@ AC_CHECK_MEMBER([Gpm_Event.wdy],,, [[#in
+ AC_SEARCH_LIBS(pthread_create, [pthread c_r])         dnl -lc_r is needed on FreeBSD to use pthread functions
+                                                       dnl reset LIBS, because we check -lgpm again
  LIBS=
+-AC_SEARCH_LIBS(tgetent,        [gpm tinfo ncurses termcap])
++AC_SEARCH_LIBS(tgetent,        [tinfow ncursesw tinfo ncurses termcap])
  
--AC_CHECK_LIB(termcap,tgetent,,AC_CHECK_LIB(ncurses,tgetent))
-+AC_CHECK_LIB(termcap,tgetent,,AC_CHECK_LIB(ncursesw,tgetent))
- 
- LIBS=
- 
+ if test "$have_x" = yes; then
+   save_CPPFLAGS="$CPPFLAGS"

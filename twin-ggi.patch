@@ -1,0 +1,11 @@
+--- twin-0.8.1/server/hw/hw_ggi.c.orig	2019-12-23 21:33:52.000000000 +0100
++++ twin-0.8.1/server/hw/hw_ggi.c	2023-02-05 20:12:21.797220740 +0100
+@@ -567,7 +567,7 @@ static byte GGI_InitHW(void) {
+ }
+ 
+ EXTERN_C byte InitModule(module Module) {
+-  Module->Private = GGI_InitHW;
++  Module->Init = GGI_InitHW;
+   return ttrue;
+ }
+ 

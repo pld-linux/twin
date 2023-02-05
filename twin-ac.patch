@@ -1,62 +1,46 @@
---- twin-0.5.1/configure.in.old	2007-09-30 19:14:50.000000000 +0200
-+++ twin-0.5.1/configure.in	2007-09-30 19:15:09.000000000 +0200
-@@ -222,6 +222,7 @@
- dnl
- dnl Checks for programs.
- dnl
-+AC_HEADER_STDC
- AC_PROG_MAKE_SET
- 
- make_is_good=no
-@@ -377,7 +378,6 @@
- dnl
- dnl Checks for header files.
- dnl
--AC_HEADER_STDC
- AC_HEADER_SYS_WAIT
- AC_HEADER_TIME
- AC_CHECK_HEADERS(crypt.h dirent.h dlfcn.h fcntl.h gpm.h ggi/ggi.h limits.h ltdl.h \
-@@ -863,12 +863,12 @@
+--- twin-0.8.1/configure.ac.orig	2023-02-05 19:51:46.010582238 +0100
++++ twin-0.8.1/configure.ac	2023-02-05 20:03:31.693425892 +0100
+@@ -86,7 +86,7 @@ for try_flag in -fomit-frame-pointer -fn
+ do
+   save_CFLAGS="$CFLAGS"
+   CFLAGS="$CFLAGS $try_flag"
+-  try_flag_id="`echo \"$try_flag\" | tr - _`"
++  try_flag_id="$(echo "$try_flag" | tr - _)"
+   AC_CACHE_CHECK(for C compiler flag $try_flag, ac_cv_cflag$try_flag_id, AC_TRY_COMPILE(
+   [
+     int ret0(void) {
+@@ -269,7 +269,7 @@ TW_FIX_CONFIG
  
  
- # this will prepare the Makefiles
--. ${TOP_SRCDIR}/scripts/Makefiles.sh "${TOP_SRCDIR}"
-+/bin/bash ${TOP_SRCDIR}/scripts/Makefiles.sh "${TOP_SRCDIR}"
+ if test "$enable__dlopen" = yes ; then
+-  AC_SUBST(LIBDL, "`echo \"$ac_cv_search_dlopen\"         | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
++  AC_SUBST(LIBDL, "$(echo "$ac_cv_search_dlopen"         | $SED -e 's/^none required$//g' -e 's/^no$//g')")
+ else
+   # if dlopen() or <dlfcn.h> are missing, or user specified --enable-dlopen=no, link against libtool
+   AC_SUBST(LIBDL, "$LIBLTDL")
+@@ -280,16 +280,16 @@ else
+   fi
+ fi
  
- 
- AC_OUTPUT(makeautoconf conf/conf.auto)
- 
--enable_="`echo \"$CONF_\" | sed 's/CONF_/enable_/g' | tr -d ';' | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz'`"
-+enable_="`echo $CONF_ | sed 's/CONF_/enable_/g' | tr -d ';' | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz'`"
- 
- ${TOP_SRCDIR}/scripts/Prettyconfig.sh "prefix='$prefix'" "CC='$CC'" "CFLAGS='$CFLAGS'" "OS='$OS'" \
- 	"SYS_SHLIBS='$SYS_SHLIBS'" "enable__asm_style='$enable__asm_style'" $enable_
---- twin-0.5.1/makerules.in.old	2007-09-30 19:07:56.000000000 +0200
-+++ twin-0.5.1/makerules.in	2007-09-30 19:08:57.000000000 +0200
-@@ -221,7 +221,7 @@
- 	fi
- 
- $(T)configure: $(T)configure.in $(ADMIN_LIBTOOLS) $(ADMIN_ACLOCAL) $(T)scripts/Makefiles.sh $(T)include/autoconf.h.in
--	rm -f $@ && cd $(TT) && autoconf --localdir=admin
-+	rm -f $@ && cd $(TT) && autoconf
- 
- $(T)include/autoconf.h.in: $(T)configure.in
- 	rm -f $@ && cd $(TT) && autoheader
-@@ -331,7 +331,7 @@
-   make-shlib-links=target_shlib=$(patsubst %.la,%.so,$(1)) ; \
-     $(LN) $$target_shlib.$(SHLIBS_VER) $(1) ; \
-     $(LN) $$target_shlib.$(SHLIBS_VER) $$target_shlib.$(MAJOR_VER) ; \
--    $(LN) $$target_shlib.$(MAJOR_VER) $$target_shlib
-+    $(LN) $$target_shlib.$(SHLIBS_VER) $$target_shlib
- 
-   #
-   # how to install a binary (program or library)
-@@ -837,7 +837,7 @@
-   install-lib-%.la:
- 	$(INSTALL) $*.so.$(SHLIBS_VER) $(DESTDIR)$(libdir)
- 	$(LN)      $*.so.$(SHLIBS_VER) $(DESTDIR)$(libdir)/$*.so.$(MAJOR_VER) && \
--	$(LN)      $*.so.$(MAJOR_VER)  $(DESTDIR)$(libdir)/$*.so
-+	$(LN)      $*.so.$(SHLIBS_VER)  $(DESTDIR)$(libdir)/$*.so
- 
-   uninstall-mod-%.la:
- 	rm -f $(DESTDIR)$(libdir)$(INSTALLSUBDIR)/$*.so.$(SHLIBS_VER)
+-AC_SUBST(LIBCRYPT,    "`echo \"$ac_cv_search_crypt\"          | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBGGI,      "`echo \"$ac_cv_search_ggiOpen\"        | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBGPM,      "`echo \"$ac_cv_search_Gpm_Open\"       | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBSOCK,     "`echo \"$ac_cv_search_gethostbyname\"  | $SED -e 's/^none required$//g' -e 's/^no$//g'` `echo \"$ac_cv_search_socket\" | $SED -e 's/^none required$//g' -e 's/^no$//g'` `echo \"$ac_cv_search_connect\"  | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBPTHREAD,  "`echo \"$ac_cv_search_pthread_create\" | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBTERMCAP,  "`echo \"$ac_cv_search_tgetent\"        | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBXPM,      "`echo \"$ac_cv_search_XpmReadFileToPixmap\"  | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
+-AC_SUBST(LIBXFT,      "`echo \"$ac_cv_search_XftFontOpen\"    | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
++AC_SUBST(LIBCRYPT,    "$(echo "$ac_cv_search_crypt"          | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBGGI,      "$(echo "$ac_cv_search_ggiOpen"        | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBGPM,      "$(echo "$ac_cv_search_Gpm_Open"       | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBSOCK,     "$(echo "$ac_cv_search_gethostbyname"  | $SED -e 's/^none required$//g' -e 's/^no$//g') $(echo "$ac_cv_search_socket" | $SED -e 's/^none required$//g' -e 's/^no$//g') $(echo "$ac_cv_search_connect"  | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBPTHREAD,  "$(echo "$ac_cv_search_pthread_create" | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBTERMCAP,  "$(echo "$ac_cv_search_tgetent"        | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBXPM,      "$(echo "$ac_cv_search_XpmReadFileToPixmap"  | $SED -e 's/^none required$//g' -e 's/^no$//g')")
++AC_SUBST(LIBXFT,      "$(echo "$ac_cv_search_XftFontOpen"    | $SED -e 's/^none required$//g' -e 's/^no$//g')")
+ if test "$enable_socket_gz" = yes; then
+-  AC_SUBST(LIBZ,      "`echo \"$ac_cv_search_deflate\"        | $SED -e 's/^none required$//g' -e 's/^no$//g'`")
++  AC_SUBST(LIBZ,      "$(echo "$ac_cv_search_deflate"        | $SED -e 's/^none required$//g' -e 's/^no$//g')")
+ fi
+ AC_SUBST(LIBTUTF,    '$(top_builddir)/libs/libTutf/libTutf.la')
+ AC_SUBST(LIBTW,      '$(top_builddir)/libs/libTw/libTw.la')
